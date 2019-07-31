@@ -57,7 +57,7 @@
         rm -rf /tmp/aur-helper
         git clone https://aur.archlinux.org/yay-bin.git /tmp/aur-helper
         cd /tmp/aur-helper
-        makepkg -si
+        makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
       shell: 'yay -S {{item}}'
