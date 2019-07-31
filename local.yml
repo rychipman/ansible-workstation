@@ -37,6 +37,7 @@
         state: present
         name:
           - acpi
+          - alsa-utils
           - dunst
           - emacs
           - firefox
