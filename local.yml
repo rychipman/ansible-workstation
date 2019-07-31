@@ -76,6 +76,6 @@
       args:
         chdir: /home/ryan
     - name: stumpwm setup
-      shell: stow stumpwm
+      shell: STOW_DIR=/home/ryan/.dotfiles stow stumpwm
       args:
         chdir: /home/ryan
