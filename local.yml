@@ -53,9 +53,13 @@
         ssh_key_type: rsa
     - pause:
         prompt: enter a random value
-      register: random_value
+      register: random_value_pause
     - debug:
-        msg: 'random variable value: {{random_value}}'
+        msg: 'random variable value: {{random_value_pause.user_input}}'
+    - name: create random file
+      file:
+        state: touch
+        path: '/home/ryan/{{random_value_pause.user_input}}'
     - name: download dotfiles
       git:
         repo: https://github.com/rychipman/dotfiles
