@@ -63,7 +63,7 @@
       shell: 'yay -S {{item}}'
       with_items:
         - i3lock-wrapper
-        - mu
+        - mu-git
         - stumpwm-git
         - ttf-monaco
         - zoom
