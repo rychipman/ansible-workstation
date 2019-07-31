@@ -21,7 +21,7 @@
         generate_ssh_key: true
         ssh_key_bits: 4096
         ssh_key_comment: ryan@ryanchipman.com
-        ssh_key_passphrase: '{{ssh_key_password_ryan}}'
+        ssh_key_passphrase: TODO
         ssh_key_type: rsa
     - name: sudoers entry
       copy:
