@@ -54,7 +54,9 @@
           - vim
           - vlc
           - xcape
+          - xorg
           - zathura
+          - zathura-pdf-mupdf
     - name: install aur helper
       shell: |
         rm -rf /tmp/aur-helper
