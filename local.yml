@@ -1,6 +1,15 @@
 - hosts: localhost
   become: true
   tasks:
+    - name: create users
+      user:
+        name: ryan
+        password: MyUserPassword
+        generate_ssh_key: true
+        ssh_key_bits: 4096
+        ssh_key_comment: ryan@ryanchipman.com
+        ssh_key_passphrase: MySSHPassword
+        ssh_key_type: rsa
     - name: install packages
       pacman:
         state: present
