@@ -38,6 +38,7 @@
           - xcape
           - zathura
     - name: install aur helper
+      become_user: ryan
       shell: |
         rm -rf /tmp/aur-helper
         git clone https://aur.archlinux.org/yay-bin.git /tmp/aur-helper
