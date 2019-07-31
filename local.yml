@@ -75,3 +75,7 @@
       shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
       args:
         chdir: /home/ryan
+    - name: stumpwm setup
+      shell: stow stumpwm
+      args:
+        chdir: /home/ryan
