@@ -60,6 +60,7 @@
         makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
+      become_user: ryan
       shell: 'yay -S {{item}}'
       with_items:
         - i3lock-wrapper
