@@ -63,7 +63,7 @@
         makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
-      shell: 'yay -S {{item}}'
+      shell: 'yay -S --nodiffmenu --noeditmenu --noconfirm {{item}}'
       with_items:
         - i3lock-wrapper
         - mu-git
