@@ -59,9 +59,9 @@
       file:
         state: absent
         path: '{{item}}'
-        with_items:
-          - /home/ryan/.bashrc
-          - /home/ryan/.bash_profile
+      with_items:
+        - /home/ryan/.bashrc
+        - /home/ryan/.bash_profile
     - name: basic stow setup
       shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
       args:
