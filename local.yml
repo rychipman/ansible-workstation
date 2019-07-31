@@ -56,5 +56,6 @@
         repo: https://github.com/rychipman/dotfiles
         dest: /home/ryan/.dotfiles
     - name: basic stow setup
-      chdir: /home/ryan
       shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
+      args:
+        chdir: /home/ryan
