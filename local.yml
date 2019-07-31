@@ -16,9 +16,9 @@
           - iw
           - ledger
           - lxterminal
+          - openssh
           - pavucontrol
           - rofi-pass
-          - ssh-keygen
           - stow
           - tmux
           - unzip
