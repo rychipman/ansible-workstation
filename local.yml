@@ -51,6 +51,13 @@
         ssh_key_comment: ryan@ryanchipman.com
         ssh_key_passphrase: '{{ssh_key_password_ryan}}'
         ssh_key_type: rsa
+    - pause:
+        prompt: enter a random value
+        register: random_value
+    - name: create random file
+      file:
+        state: touch
+        path: '{{random_value}}'
     - name: download dotfiles
       git:
         repo: https://github.com/rychipman/dotfiles
