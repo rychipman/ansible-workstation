@@ -38,6 +38,7 @@
         name:
           - acpi
           - dunst
+          - emacs
           - firefox
           - go
           - graphviz
