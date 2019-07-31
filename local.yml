@@ -37,11 +37,21 @@
           - vlc
           - xcape
           - zathura
-          #- mu
-          #- i3lock-wrapper
-          #- ttf-monaco
-          #- zoom
-          #- yay
+    - name: install aur helper
+      shell: |
+        rm -rf /tmp/aur-helper
+        git clone https://aur.archlinux.org/yay-bin.git /tmp/aur-helper
+        cd /tmp/aur-helper
+        makepkg -si
+        rm -rf /tmp/aur-helper
+    - name: install aur packages
+      shell: 'yay -S {{item}}'
+      with_items:
+        - i3lock-wrapper
+        - mu
+        - stumpwm-git
+        - ttf-monaco
+        - zoom
     - name: create users
       user:
         name: ryan
