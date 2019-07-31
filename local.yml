@@ -55,6 +55,13 @@
       git:
         repo: https://github.com/rychipman/dotfiles
         dest: /home/ryan/.dotfiles
+    - name: remove typical stow conflicts
+      file:
+        state: absent
+        path: '{{item}}'
+        with_items:
+          - /home/ryan/.bashrc
+          - /home/ryan/.bash_profile
     - name: basic stow setup
       shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
       args:
