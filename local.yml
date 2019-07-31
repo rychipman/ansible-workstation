@@ -32,6 +32,7 @@
         content: '%wheel ALL=(ALL) ALL'
         dest: /etc/sudoers.d/wheel
     - name: install packages
+      become: false
       pacman:
         state: present
         name:
