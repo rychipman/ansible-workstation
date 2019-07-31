@@ -1,5 +1,4 @@
 - hosts: localhost
-  become: true
   vars_prompt:
     - name: user_password_ryan
       prompt: Enter password for user ryan
@@ -9,11 +8,13 @@
       salt_size: 7
   tasks:
     - name: install packages as root
+      become: true
       pacman:
         state: present
         name:
           - openssh
     - name: create user
+      become: true
       user:
         name: ryan
         password: '{{user_password_ryan}}'
@@ -24,6 +25,7 @@
         ssh_key_passphrase: TODO
         ssh_key_type: rsa
     - name: sudoers entry
+      become: true
       copy:
         content: '%wheel ALL=(ALL) ALL'
         dest: /etc/sudoers.d/wheel
@@ -52,7 +54,6 @@
           - xcape
           - zathura
     - name: install aur helper
-      become_user: ryan
       shell: |
         rm -rf /tmp/aur-helper
         git clone https://aur.archlinux.org/yay-bin.git /tmp/aur-helper
@@ -60,7 +61,6 @@
         makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
-      become_user: ryan
       shell: 'yay -S {{item}}'
       with_items:
         - i3lock-wrapper
