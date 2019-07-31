@@ -51,3 +51,10 @@
         ssh_key_comment: ryan@ryanchipman.com
         ssh_key_passphrase: '{{ssh_key_password_ryan}}'
         ssh_key_type: rsa
+    - name: download dotfiles
+      git:
+        repo: https://github.com/rychipman/dotfiles
+        dest: /home/ryan/.dotfiles
+    - name: basic stow setup
+      chdir: /home/ryan
+      shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
