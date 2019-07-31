@@ -53,7 +53,7 @@
         ssh_key_type: rsa
     - pause:
         prompt: enter a random value
-        register: random_value
+      register: random_value
     - name: create random file
       file:
         state: touch
