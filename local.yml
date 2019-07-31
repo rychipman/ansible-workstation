@@ -3,7 +3,7 @@
   tasks:
     - name: install packages
       pacman:
-        name: {{item}}
+        name: '{{item}}'
         state: present
       with_items:
         - htop
