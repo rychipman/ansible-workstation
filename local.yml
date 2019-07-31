@@ -1,5 +1,16 @@
 - hosts: localhost
   become: true
+  vars_prompt:
+    - name: user_password_ryan
+      prompt: Enter password for user ryan
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+      salt_size: 7
+    - name: ssh_key_password_ryan
+      prompt: Enter password for ryan's ssh key
+      private: yes
+      confirm: yes
   tasks:
     - name: install packages
       pacman:
@@ -34,9 +45,9 @@
     - name: create users
       user:
         name: ryan
-        password: MyUserPassword
+        password: '{{user_password_ryan}}'
         generate_ssh_key: true
         ssh_key_bits: 4096
         ssh_key_comment: ryan@ryanchipman.com
-        ssh_key_passphrase: MySSHPassword
+        ssh_key_passphrase: '{{ssh_key_password_ryan}}'
         ssh_key_type: rsa
