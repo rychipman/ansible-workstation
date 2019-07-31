@@ -7,11 +7,26 @@
       encrypt: sha512_crypt
       confirm: yes
       salt_size: 7
-    - name: ssh_key_password_ryan
-      prompt: Enter password for ryan's ssh key
-      private: yes
-      confirm: yes
   tasks:
+    - name: install packages as root
+      pacman:
+        state: present
+        name:
+          - openssh
+    - name: create user
+      user:
+        name: ryan
+        password: '{{user_password_ryan}}'
+        groups: wheel
+        generate_ssh_key: true
+        ssh_key_bits: 4096
+        ssh_key_comment: ryan@ryanchipman.com
+        ssh_key_passphrase: '{{ssh_key_password_ryan}}'
+        ssh_key_type: rsa
+    - name: sudoers entry
+      copy:
+        content: '%wheel ALL=(ALL) ALL'
+        dest: /etc/sudoers.d/wheel
     - name: install packages
       pacman:
         state: present
@@ -27,7 +42,6 @@
           - iw
           - ledger
           - lxterminal
-          - openssh
           - pavucontrol
           - rofi-pass
           - stow
@@ -53,15 +67,6 @@
         - stumpwm-git
         - ttf-monaco
         - zoom
-    - name: create users
-      user:
-        name: ryan
-        password: '{{user_password_ryan}}'
-        generate_ssh_key: true
-        ssh_key_bits: 4096
-        ssh_key_comment: ryan@ryanchipman.com
-        ssh_key_passphrase: '{{ssh_key_password_ryan}}'
-        ssh_key_type: rsa
     - pause:
         prompt: enter a random value
       register: random_value_pause
