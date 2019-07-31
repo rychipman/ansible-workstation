@@ -1,4 +1,6 @@
 - hosts: localhost
+  become: true
+  become_user: ryan
   vars_prompt:
     - name: user_password_ryan
       prompt: Enter password for user ryan
@@ -8,13 +10,13 @@
       salt_size: 7
   tasks:
     - name: install packages as root
-      become: true
+      become: false
       pacman:
         state: present
         name:
           - openssh
     - name: create user
-      become: true
+      become: false
       user:
         name: ryan
         password: '{{user_password_ryan}}'
@@ -25,7 +27,7 @@
         ssh_key_passphrase: TODO
         ssh_key_type: rsa
     - name: sudoers entry
-      become: true
+      become: false
       copy:
         content: '%wheel ALL=(ALL) ALL'
         dest: /etc/sudoers.d/wheel
