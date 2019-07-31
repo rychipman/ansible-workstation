@@ -54,10 +54,8 @@
     - pause:
         prompt: enter a random value
       register: random_value
-    - name: create random file
-      file:
-        state: touch
-        path: '{{random_value}}'
+    - debug:
+        msg: 'random variable value: {{random_value}}'
     - name: download dotfiles
       git:
         repo: https://github.com/rychipman/dotfiles
