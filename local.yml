@@ -5,14 +5,12 @@
       pacman:
         state: present
         name:
-          - htop
-          - tmux
           - acpi
           - dunst
-          - zathura
           - firefox
           - go
           - graphviz
+          - htop
           - intel-ucode
           - isync
           - iw
@@ -21,10 +19,12 @@
           - pavucontrol
           - rofi-pass
           - stow
+          - tmux
           - unzip
           - vim
           - vlc
           - xcape
+          - zathura
           #- mu
           #- i3lock-wrapper
           #- ttf-monaco
