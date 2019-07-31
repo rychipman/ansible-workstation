@@ -84,11 +84,7 @@
       with_items:
         - /home/ryan/.bashrc
         - /home/ryan/.bash_profile
-    - name: basic stow setup
-      shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin git ssh stow
-      args:
-        chdir: /home/ryan
-    - name: stumpwm setup
-      shell: STOW_DIR=/home/ryan/.dotfiles stow stumpwm
+    - name: enable stow configs
+      shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin dunst emacs git ledger lxterminal mbsync mongodb pass rust ssh stow stumpwm tmux vim
       args:
         chdir: /home/ryan
