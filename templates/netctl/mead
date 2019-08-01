@@ -1,0 +1,7 @@
+Description='9 Mead Ave WiFi'
+Interface={{wireless_interface}}
+Connection=wireless
+Security=wpa
+IP=dhcp
+ESSID=HKZR2
+Key={{mead_ave_wifi_key}}

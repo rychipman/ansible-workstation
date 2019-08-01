@@ -1,0 +1,12 @@
+Description='MongoDB Office WiFi'
+Interface={{wireless_interface}}
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+WPAConfigSection=(
+    'ssid="MongoDB_Employee"'
+    'key_mgmt=WPA-EAP'
+	'eap=PEAP'
+	'identity="ryan.chipman"'
+	'password="{{mongodb_sso_password}}"'
+)

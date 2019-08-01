@@ -1,6 +1,9 @@
 - hosts: localhost
   become: true
   become_user: ryan
+  vars_files:
+    - ./vars/vars.yml
+    - ./vars/secrets.yml
   vars_prompt:
     - name: user_password_ryan
       prompt: Enter password for user ryan
