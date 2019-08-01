@@ -48,16 +48,16 @@
         state: present
         name:
           - acpi
-          - alsa-utils
+          - alsa-utils # for alsamixer and amixer
           - dunst
           - emacs
           - firefox
           - go
-          - graphviz
+          - graphviz # needed by a variety of tools
           - htop
           - intel-ucode
-          - isync
-          - iw
+          - isync # for syncing email
+          - iw # for manually setting up wifi connections
           - ledger
           - lxterminal
           - pavucontrol
@@ -70,7 +70,7 @@
           - xcape
           - xorg
           - zathura
-          - zathura-pdf-mupdf
+          - zathura-pdf-mupdf # actually need to install backends for zathura
     - name: install aur helper
       shell: |
         rm -rf /tmp/aur-helper
