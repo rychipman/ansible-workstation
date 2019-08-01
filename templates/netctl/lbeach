@@ -1,0 +1,7 @@
+Description='10 Little Beach Rd WiFi'
+Interface={{wireless_interface}}
+Connection=wireless
+Security=wpa
+IP=dhcp
+ESSID=LBeach
+Key={{lbeach_wifi_key}}

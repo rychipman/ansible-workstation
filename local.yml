@@ -42,6 +42,8 @@
       with_items:
         - mead
         - mongodb
+        - lbeach
+        - iota
     - name: install packages
       become: false
       pacman:

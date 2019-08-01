@@ -1,0 +1,7 @@
+Description='Ryan's iPhone WiFi Hotspot'
+Interface={{wireless_interface}}
+Connection=wireless
+Security=wpa
+IP=dhcp
+ESSID=iota
+Key={{iota_wifi_key}}
