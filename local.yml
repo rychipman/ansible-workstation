@@ -31,6 +31,14 @@
       copy:
         content: '%wheel ALL=(ALL) ALL'
         dest: /etc/sudoers.d/wheel
+    - name: netctl profiles
+      become: false
+      template:
+        src: './templates/netctl/{{item}}'
+        dest: '/etc/netctl/{{item}}'
+      with_items:
+        - mead
+        - mongodb
     - name: install packages
       become: false
       pacman:
