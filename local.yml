@@ -109,3 +109,22 @@
       shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin dunst emacs git ledger lxterminal mbsync mongodb pass rust ssh stow stumpwm tmux vim
       args:
         chdir: /home/ryan
+    - name: ensure mbsync secrets directory exists
+      file:
+        path: /home/ryan/.local/share/secrets/mbsync
+        state: directory
+    - name: deploy mbsync mongodb secret
+      copy:
+        content: '{{mbsync_mongodb_password}}'
+        dest: /home/ryan/.local/share/secrets/mbsync/mongodb
+    - name: deploy mbsync personal secret
+      copy:
+        content: '{{mbsync_personal_password}}'
+        dest: /home/ryan/.local/share/secrets/mbsync/personal
+    - name: create mailboxes
+      file:
+        path: '/home/ryan/mail/{{item}}'
+        state: directory
+      with_items:
+        - mongodb
+        - personal
