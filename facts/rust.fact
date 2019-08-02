@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if which rustup > /dev/null 2>&1; then
+    installed='true'
+else
+    installed='false'
+fi
+
+cat <<EOF
+{ "rustup_installed": $installed }
+EOF

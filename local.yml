@@ -12,6 +12,25 @@
       confirm: yes
       salt_size: 7
   tasks:
+    - name: create custom fact directory
+      tags: [ 'quick' ]
+      become: false
+      file:
+        path: /etc/ansible/facts.d
+        state: directory
+    - name: install custom fact files
+      tags: [ 'quick' ]
+      become: false
+      copy:
+        src: './facts/{{item}}.fact'
+        dest: '/etc/ansible/facts.d/{{item}}.fact'
+        mode: 0755
+      with_items:
+        - rust
+    - name: re-run setup to load custom facts
+      tags: [ 'quick' ]
+      setup:
+        filter: ansible_local
     - name: install packages as root
       become: false
       pacman:
@@ -128,3 +147,7 @@
       with_items:
         - mongodb
         - personal
+    - name: install rustup
+      tags: [ 'quick' ]
+      shell: 'curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y'
+      when: not ansible_facts.ansible_local.rust.rustup_installed
