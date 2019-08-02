@@ -92,6 +92,7 @@
       git:
         repo: 'git@github.com:{{item.repo}}'
         dest: '/home/ryan/{{item.path}}'
+        update: false
       with_items:
         - { repo: 'rychipman/dotfiles', path: '.dotfiles' }
         - { repo: 'rychipman/password-store', path: '.password-store' }
