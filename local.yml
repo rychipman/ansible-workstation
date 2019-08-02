@@ -13,13 +13,11 @@
       salt_size: 7
   tasks:
     - name: create custom fact directory
-      tags: [ 'quick' ]
       become: false
       file:
         path: /etc/ansible/facts.d
         state: directory
     - name: install custom fact files
-      tags: [ 'quick' ]
       become: false
       copy:
         src: './facts/{{item}}.fact'
@@ -29,7 +27,6 @@
         - rust
         - pacman
     - name: re-run setup to load custom facts
-      tags: [ 'quick' ]
       setup:
         filter: ansible_local
     - name: install packages as root
@@ -101,7 +98,6 @@
         makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
-      tags: ["quick"]
       shell: 'yay -S --nodiffmenu --noeditmenu --noconfirm {{item}}'
       when: item not in ansible_facts.ansible_local.pacman.packages_installed
       with_items:
