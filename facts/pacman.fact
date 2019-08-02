@@ -1,0 +1,8 @@
+#!/bin/bash
+
+installed="$(pacman -Qe | awk '{print "\""$1"\""","}')"
+installed="${installed%,}"
+
+cat <<EOF
+{ "packages_installed": [ $installed ] }
+EOF

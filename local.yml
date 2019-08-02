@@ -27,6 +27,7 @@
         mode: 0755
       with_items:
         - rust
+        - pacman
     - name: re-run setup to load custom facts
       tags: [ 'quick' ]
       setup:
@@ -100,7 +101,9 @@
         makepkg --install --syncdeps --asdeps --noconfirm --noprogressbar
         rm -rf /tmp/aur-helper
     - name: install aur packages
+      tags: ["quick"]
       shell: 'yay -S --nodiffmenu --noeditmenu --noconfirm {{item}}'
+      when: item not in ansible_facts.ansible_local.pacman.packages_installed
       with_items:
         - i3lock-wrapper
         - mu-git
@@ -148,6 +151,5 @@
         - mongodb
         - personal
     - name: install rustup
-      tags: [ 'quick' ]
       shell: 'curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y'
       when: not ansible_facts.ansible_local.rust.rustup_installed
