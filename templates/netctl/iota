@@ -1,4 +1,4 @@
-Description='Ryan's iPhone WiFi Hotspot'
+Description='Ryan iPhone WiFi Hotspot'
 Interface={{wireless_interface}}
 Connection=wireless
 Security=wpa
