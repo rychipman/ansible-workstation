@@ -108,6 +108,7 @@
         - mu-git
         - stumpwm-git
         - ttf-monaco
+        - ttf-ms-fonts
         - zoom
     - name: download github repos
       git:
