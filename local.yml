@@ -61,6 +61,7 @@
         - mongodb
         - lbeach
         - iota
+        - iphone-usb
     - name: install packages
       become: false
       pacman:
@@ -78,12 +79,14 @@
           - isync # for syncing email
           - iw # for manually setting up wifi connections
           - ledger
+          - libimobiledevice
           - lxterminal
           - pavucontrol
           - rofi-pass
           - stow
           - tmux
           - unzip
+          - usbmuxd
           - vim
           - vlc
           - xcape
