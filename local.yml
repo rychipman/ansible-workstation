@@ -110,6 +110,14 @@
         - ttf-monaco
         - ttf-ms-fonts
         - zoom
+    - name: ensure directories for github repos exist
+      file:
+        path: '/home/ryan/{{item}}'
+        state: directory
+      with_items:
+        - git/sol/
+        - git/personal/
+        - .go/src/github.com/10gen/
     - name: download github repos
       git:
         repo: 'git@github.com:{{item.repo}}'
@@ -120,6 +128,10 @@
         - { repo: 'rychipman/password-store', path: '.password-store' }
         - { repo: 'rychipman/ledger', path: 'ledger' }
         - { repo: 'rychipman/org', path: 'org' }
+        - { repo: 'rychipman/plaint', path: 'git/personal/plaint' }
+        - { repo: 'rychipman/kludger', path: 'git/personal/kludger' }
+        - { repo: 'solsensor/sol', path: 'git/sol/sol' }
+        - { repo: '10gen/sqlproxy', path: '.go/src/github.com/10gen/sqlproxy' }
     - name: remove typical stow conflicts
       file:
         state: absent
