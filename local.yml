@@ -61,7 +61,8 @@
         - mongodb
         - lbeach
         - iota
-        - iphone-usb
+        - iphone-usb-right
+        - iphone-usb-left
     - name: install packages
       become: false
       pacman:
