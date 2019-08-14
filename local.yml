@@ -82,6 +82,7 @@
           - ledger
           - libimobiledevice
           - lxterminal
+          - mariadb
           - mariadb-clients
           - pavucontrol
           - rofi-pass
