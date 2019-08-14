@@ -86,6 +86,9 @@
           - pavucontrol
           - rofi-pass
           - stow
+          - texlive-bin
+          - texlive-core
+          - texlive-latexextra
           - tmux
           - unzip
           - usbmuxd
