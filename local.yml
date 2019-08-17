@@ -150,7 +150,7 @@
         - /home/ryan/.bashrc
         - /home/ryan/.bash_profile
     - name: enable stow configs
-      shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin dunst emacs git go ledger lxterminal mbsync mongodb pass rust ssh stow stumpwm tmux vim
+      shell: STOW_DIR=/home/ryan/.dotfiles stow bash bin dunst emacs git go ledger lxterminal mbsync mongodb pass ruby rust ssh stow stumpwm tmux vim
       args:
         chdir: /home/ryan
     - name: ensure mbsync secrets directory exists
