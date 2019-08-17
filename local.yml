@@ -84,9 +84,12 @@
           - lxterminal
           - mariadb
           - mariadb-clients
+          - nodejs
           - pavucontrol
           - rofi-pass
+          - ruby
           - stow
+          - sqlite
           - texlive-bin
           - texlive-core
           - texlive-latexextra
@@ -123,6 +126,7 @@
       with_items:
         - git/sol/
         - git/personal/
+        - git/work/
         - .go/src/github.com/10gen/
     - name: download github repos
       git:
@@ -137,7 +141,7 @@
         - { repo: 'rychipman/plaint', path: 'git/personal/plaint' }
         - { repo: 'rychipman/kludger', path: 'git/personal/kludger' }
         - { repo: 'solsensor/sol', path: 'git/sol/sol' }
-        - { repo: '10gen/sqlproxy', path: '.go/src/github.com/10gen/sqlproxy' }
+        - { repo: '10gen/sqlproxy', path: 'git/work/sqlproxy' }
     - name: remove typical stow conflicts
       file:
         state: absent
@@ -171,3 +175,10 @@
     - name: install rustup
       shell: 'curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y'
       when: not ansible_facts.ansible_local.rust.rustup_installed
+    - name: install go binaries
+      shell: 'which {{item.bin}} || GO111MODULE=on go get {{item.pkg}}@latest'
+      with_items:
+        - { bin: dlv, pkg: github.com/go-delve/delve/cmd/dlv }
+        - { bin: gopls, pkg: golang.org/x/tools/gopls }
+    - name: install rails
+      shell: 'which rails || gem install rails'
